@@ -26,4 +26,9 @@ class ProductService
     {
         return $this->productRepository->store($data);
     }
+
+    public function update(int $data, $id)
+    {
+        
+    }
 }

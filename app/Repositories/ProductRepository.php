@@ -18,6 +18,12 @@ class ProductRepository
     {
         return Product::create($data);
     }
+
+    public function uodate(int $id, array $data){
+        $product = $this->details($id);
+        $product->update($data);
+        return $product;
+    }
 }
 
 

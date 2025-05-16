@@ -39,6 +39,8 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('/products' , 'get');
     Route::get('/products/{id}', 'details');
     Route::post('/products' , 'store');
+    Route::patch('/product/{id}', 'update');
+    Route::delete('/product/{id}', 'delete');
 
     
 });
