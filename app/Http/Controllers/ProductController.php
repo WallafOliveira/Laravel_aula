@@ -40,5 +40,23 @@ class ProductController extends Controller
         $product = $this->productService->update($id, $data);
         return response()->json($product);
     }
+    
+    public function delete(int $id)
+    {
+        $product = $this->productService->delete($id);
+        return response()->json($product);
+    }
+
+    public function getWithCategory()
+    {
+        $product = $this->productService->getWithCategory();
+        return response()->json($product);
+    }
+
+        public function findCategory()
+    {
+        $product = $this->productService->getWithCategory();
+        return response()->json($product);
+    }
 }
 

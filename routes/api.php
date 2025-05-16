@@ -37,29 +37,32 @@ Route::get('/user', function (Request $request) {
 
 Route::controller(ProductController::class)->group(function(){
     Route::get('/products' , 'get');
+    Route::get('/produts/category/{id}', 'getWithCategory');
     Route::get('/products/{id}', 'details');
     Route::post('/products' , 'store');
-    Route::patch('/product/{id}', 'update');
-    Route::delete('/product/{id}', 'delete');
+    Route::patch('/products/{id}', 'update');
+    Route::delete('/products/{id}', 'delete');
+    Route::get('/products/category/{id}', 'findCategory');
+    
 
     
 });
 
-Route::patch('/products/{id}', function (Request $request, $id){
-   $product = Product::find($id);
+// Route::patch('/products/{id}', function (Request $request, $id){
+//    $product = Product::find($id);
 
-   if($request->input('name') !== null){
-        $product->name = $request->input('name');
-   }
-   if($request->input('price') !== null){
-    $product->price = $request->input('price');
-}
-    if($request->input('description') !== null){
-        $product->description = $request->input('description');
-}
-    $product->save();
-    return response()->json($product);
-});
+//    if($request->input('name') !== null){
+//         $product->name = $request->input('name');
+//    }
+//    if($request->input('price') !== null){
+//     $product->price = $request->input('price');
+// }
+//     if($request->input('description') !== null){
+//         $product->description = $request->input('description');
+// }
+//     $product->save();
+//     return response()->json($product);
+// });
 
 
 

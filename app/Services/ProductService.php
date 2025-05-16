@@ -2,6 +2,7 @@
 
 namespace App\Services;
 use App\Repositories\ProductRepository;
+use PhpParser\Node\Stmt\Return_;
 
 class ProductService
 {
@@ -27,8 +28,24 @@ class ProductService
         return $this->productRepository->store($data);
     }
 
-    public function update(int $data, $id)
+    public function update(int $id, array $data)
     {
-        
+        return $this->productRepository->update($id, $data);
+    }
+
+    public function delete(int $id)
+    {
+        return $this->productRepository->delete($id);
+    }
+
+    public function getWithCategory()
+    {
+        return $this->productRepository->getWithCategory();
+    }
+
+    
+    public function findCategory(int $id)
+    {
+        return $this->productRepository->findCategory($id);
     }
 }
