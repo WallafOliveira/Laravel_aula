@@ -17,7 +17,6 @@ class CategoryRepository
     {
         return Category::find($id);
     }
-
  
     public function store(array $data)
     {
