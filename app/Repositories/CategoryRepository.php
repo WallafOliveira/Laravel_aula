@@ -1,51 +1,41 @@
 <?php
+
 namespace App\Repositories;
 
-use App\Models\Product;
-class ProductRepository
+use App\Models\Category;
+
+class CategoryRepository
 {
+
     public function get()
     {
-    return Product::all();
+        return Category::all();
     }
+
 
     public function details(int $id)
     {
-        return Product::find($id);
+        return Category::find($id);
     }
-    
+
+ 
     public function store(array $data)
     {
-        return Product::create($data);
+        return Category::create($data);
     }
 
-    public function update(int $id, array $data){
-        $product = $this->details($id);
-        $product->update($data);
-        return $product;
-    }
-
-    public function delete(int $id)
+    public function update(int $id, array $data)
     {
-        $product = $this->details($id);
-        $product->delete();
-        return $product;
-    }
-
-    public function getWithCategory()
-    {
-        $products = Product::with('category')->get();
-        return $products;
-    }
-
-    public function findCategory(int $id)
-    { 
-        $product = $this->details($id);
-        $category = $product->category;
+        $category = $this->details($id);
+        $category->update($data);
         return $category;
     }
 
+
+    public function delete(int $id)
+    {
+        $category = $this->details($id);
+        $category->delete();
+        return $category;
+    }
 }
-
-
-
