@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\empresa;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -35,6 +36,10 @@ Route::get('/user', function (Request $request) {
 //     return response()->json($product);
 //    });
 
+Route::controller(CategoryController::class)->group(function(){
+    Route::get('/categories' , 'get');
+});
+
 Route::controller(ProductController::class)->group(function(){
     Route::get('/products' , 'get');
     Route::get('/produts/category/{id}', 'getWithCategory');
@@ -42,14 +47,10 @@ Route::controller(ProductController::class)->group(function(){
     Route::post('/products' , 'store');
     Route::patch('/products/{id}', 'update');
     Route::delete('/products/{id}', 'delete');
-    Route::get('/products/category/{id}', 'findCategory');
-
-    Route::get('/categories' , 'get');
-    Route::post('/categories' , 'store');
-    
-
-    
+    Route::get('/products/category/{id}', 'findCategory');  
 });
+
+
 
 // Route::patch('/products/{id}', function (Request $request, $id){
 //    $product = Product::find($id);
@@ -78,10 +79,10 @@ Route::post('/categories' , function (Request $request) {
     return response()->json($category);
 });
 
-Route::get('/categories' , function () {
-    $categories = Category::all();
-    return response()->json($categories);
-   });
+// Route::get('/categories' , function () {
+//     $categories = Category::all();
+//     return response()->json($categories);
+//    });
 
 // Route::get('/products/category' , function () {
 //     $products = Product::with('category')->get();
