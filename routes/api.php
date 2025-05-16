@@ -43,6 +43,9 @@ Route::controller(ProductController::class)->group(function(){
     Route::patch('/products/{id}', 'update');
     Route::delete('/products/{id}', 'delete');
     Route::get('/products/category/{id}', 'findCategory');
+
+    Route::get('/categories' , 'get');
+    Route::post('/categories' , 'store');
     
 
     
@@ -80,10 +83,10 @@ Route::get('/categories' , function () {
     return response()->json($categories);
    });
 
-Route::get('/products/category' , function () {
-    $products = Product::with('category')->get();
-    return response()->json($products);
-   });
+// Route::get('/products/category' , function () {
+//     $products = Product::with('category')->get();
+//     return response()->json($products);
+//    });
 
 Route::get('/category/products' , function () {
     $categories = Category::with('products')->get();
@@ -97,11 +100,11 @@ Route::get('/category/products' , function () {
     return response()->json($products);
    });
 
-Route::get('/products/category/{id}' , function ($id) {
-    $product= Product::find($id);
-    $category = $product->category;
-    return response()->json($category);
-   });
+// Route::get('/products/category/{id}' , function ($id) {
+//     $product= Product::find($id);
+//     $category = $product->category;
+//     return response()->json($category);
+//    });
 
 
 
@@ -116,21 +119,21 @@ Route::get('/categories/{id}' , function ($id) {
     return response()->json($category);
    });
 
-Route::patch('/products/{id}', function (Request $request, $id){
-   $product = Product::find($id);
+// Route::patch('/products/{id}', function (Request $request, $id){
+//    $product = Product::find($id);
 
-   if($request->input('name') !== null){
-        $product->name = $request->input('name');
-   }
-   if($request->input('price') !== null){
-    $product->price = $request->input('price');
-}
-    if($request->input('description') !== null){
-        $product->description = $request->input('description');
-}
-    $product->save();
-    return response()->json($product);
-});
+//    if($request->input('name') !== null){
+//         $product->name = $request->input('name');
+//    }
+//    if($request->input('price') !== null){
+//     $product->price = $request->input('price');
+// }
+//     if($request->input('description') !== null){
+//         $product->description = $request->input('description');
+// }
+//     $product->save();
+//     return response()->json($product);
+// });
 
 Route::patch('/categories/{id}', function (Request $request, $id){
     $category = Category::find($id);

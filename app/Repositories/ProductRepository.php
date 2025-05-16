@@ -44,6 +44,7 @@ class ProductRepository
         $category = $product->category;
         return $category;
     }
+
 }
 
 

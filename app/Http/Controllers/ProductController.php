@@ -17,8 +17,10 @@ class ProductController extends Controller
     public function get()
     {
         $products = $this->productService->get();
-        return response()->json($products);
+        $categories = $this->productService->get();
+        return response()->json($products, $categories);
     }
+
     public function details(int $id)
     {
     
@@ -58,5 +60,8 @@ class ProductController extends Controller
         $product = $this->productService->getWithCategory();
         return response()->json($product);
     }
+///////////////////////////////////////////////////
+
+
 }
 

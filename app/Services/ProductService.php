@@ -16,6 +16,7 @@ class ProductService
     {
         $products = $this->productRepository->get();
         return $products;
+
     }
 
     public function details(int $id)
